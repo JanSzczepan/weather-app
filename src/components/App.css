@@ -1,3 +1,32 @@
-.App {
-  color: red;
+.container {
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: rgb(36, 36, 36);
+   background: linear-gradient(160deg, rgba(36, 36, 36, 1) 0%, rgba(21, 21, 21, 1) 50%, rgba(16, 16, 16, 1) 100%);
+}
+
+.app {
+   height: 80%;
+   width: 80%;
+   max-width: 1080px;
+   display: flex;
+   flex-direction: column;
+   background-image: url('../../public/img/rainy.jpg');
+   background-repeat: no-repeat;
+   background-position: center top;
+   background-size: cover;
+   -webkit-box-shadow: 15px 15px 30px 10px #0C0C0C;
+   box-shadow: 15px 15px 30px 10px #0C0C0C;
+}
+
+.app__result {
+   flex-grow: 1;
+}
+
+.app__aside {
+   height: 30%;
+   background-color: rgba(27, 27, 27, 0.219);
+   backdrop-filter: blur(5px);
 }

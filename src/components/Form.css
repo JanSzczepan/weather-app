@@ -20,12 +20,26 @@
 .form__btn {
    background-color: #81A09A;
    color: #28434C;
-   font-size: 1.8rem;
    border: none;
    box-shadow: none;
    outline: none;
 }
 
 .form__icon {
+   font-size: 1.8rem;
    padding: 20px;
+}
+
+@media(min-width: 768px) {
+   .form__input {
+      margin: 0 50px;
+      font-size: 2rem;
+   }
+}
+
+@media(min-width: 992px) {
+   .form__icon {
+      font-size: 2rem;
+      padding: 25px;
+   }
 }

@@ -1,0 +1,31 @@
+.form {
+   display: flex;
+}
+
+.form__input {
+   flex-grow: 1;
+   align-self: flex-end;
+   min-width: 0px;
+   margin: 0 30px;
+   padding: 5px 0;
+   font-size: 1.8rem;
+   background-color: transparent;
+   color: #9EA7A6;
+   border: none;
+   border-bottom: 1px solid #9EA7A6;
+   box-shadow: none !important;
+   outline: none;
+}
+
+.form__btn {
+   background-color: #81A09A;
+   color: #28434C;
+   font-size: 1.8rem;
+   border: none;
+   box-shadow: none;
+   outline: none;
+}
+
+.form__icon {
+   padding: 20px;
+}

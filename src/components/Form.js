@@ -6,9 +6,10 @@ const Form = props => {
       <form className='form'>
          <input 
             className='form__input' 
-            type="text"
+            type='text'
             value={props.value}
-            onChange={props.change} />
+            onChange={props.change}
+            placeholder='Type city...' />
          <button className='form__btn' type='submit'><i className="form__icon fas fa-search"></i></button>
       </form>
    );

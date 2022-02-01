@@ -94,3 +94,19 @@ body {
 ::-webkit-scrollbar-thumb:hover {
    background: #E0E3E3;
 }
+
+
+
+::-webkit-input-placeholder {
+   /* Edge */
+   color: #99A3A2;
+}
+
+:-ms-input-placeholder {
+   /* Internet Explorer 10-11 */
+   color: #99A3A2;
+}
+
+::placeholder {
+   color: #99A3A2;
+}

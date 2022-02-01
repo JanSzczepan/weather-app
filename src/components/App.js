@@ -7,12 +7,35 @@ import Result from './Result';
 class App extends Component {
   state = {
     value: '',
+    date: '',
+    city: '',
+    weather: '',
+    temp: '',
+    cloudy: '',
+    humidity: '',
+    wind: '',
+    fall: '',
+    err: '',
   }
 
   handleInputChange = (e) => {
     this.setState({
       value: e.target.value,
     })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const API = `http://api.openweathermap.org/data/2.5/find?q=${this.state.value}&units=metric&lang=en&appid=f00a157958cfde0f24c05b9a0b456a37`;
+
+    fetch(API)
+      .then(response => {
+        if(response.ok) return response.json()
+        else throw Error('Invalid API')
+      })
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -23,7 +46,11 @@ class App extends Component {
             <Result />
           </section>
           <aside className="app__aside">
-            <Form value={this.state.value} change={this.handleInputChange}/>
+            <Form 
+              value={this.state.value} 
+              change={this.handleInputChange}
+              submit={this.handleSubmit}
+            />
             <Details />
           </aside>
         </main>

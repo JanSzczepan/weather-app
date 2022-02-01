@@ -17,7 +17,7 @@ class App extends Component {
     humidity: '',
     wind: '',
     fall: '',
-    err: '',
+    err: false,
   }
 
   handleInputChange = (e) => {
@@ -36,8 +36,29 @@ class App extends Component {
         if(response.ok) return response.json()
         else throw Error('Invalid API')
       })
-      .then(data => console.log(data))
-      .catch(err => console.log(err))
+      .then(data => {
+        console.log(data);
+        // What to do if data has empty array???
+        if(!data.list.length) throw Error('Invalid request')
+        //
+        this.setState({
+          city: data.list[0].name,
+          weather: data.list[0].weather[0].main,
+          temp: data.list[0].main.temp,
+          cloudy: data.list[0].clouds.all,
+          humidity: data.list[0].main.humidity,
+          wind: data.list[0].wind.speed,
+          fall: {rain: data.list[0].rain, snow: data.list[0].snow},
+          err: false,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        this.setState(prevState => ({
+          city: prevState.value,
+          err: true,
+        }))
+      })
   }
 
   render() {

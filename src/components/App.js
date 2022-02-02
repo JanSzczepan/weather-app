@@ -17,6 +17,7 @@ class App extends Component {
     humidity: '',
     wind: '',
     fall: '',
+    icon: '',
     err: false,
   }
 
@@ -26,11 +27,7 @@ class App extends Component {
     })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    
-    const API = `http://api.openweathermap.org/data/2.5/find?q=${this.state.value}&units=metric&lang=en&appid=${API_KEY}`;
-
+  handleAPI = (API) => {
     fetch(API)
       .then(response => {
         if(response.ok) return response.json()
@@ -51,6 +48,7 @@ class App extends Component {
           fall: {rain: data.list[0].rain, snow: data.list[0].snow},
           err: false,
         });
+        this.handleWeatherIcon(this.state.weather);
       })
       .catch(err => {
         console.log(err);
@@ -61,12 +59,35 @@ class App extends Component {
       })
   }
 
+  handleWeatherIcon = (weather) => {
+    if(weather === 'Thunderstorm') 
+      this.setState({icon: 'fas fa-poo-storm'});
+    else if(weather === 'Drizzle' || weather === 'Rain') 
+      this.setState({icon: 'fas fa-cloud-showers-heavy'});
+    else if(weather === 'Snow') 
+      this.setState({icon: 'fas fa-snowflake'});
+    else if(weather === 'Mist' || weather === 'Smoke' || weather === 'Haze' || weather === 'Dust' || weather === 'Fog' || weather === 'Sand' || weather === 'Dust' || weather === 'Ash' || weather === 'Squall' || weather === 'Tornado')
+      this.setState({icon: 'fas fa-smog'});
+    else if(weather === 'Clear') 
+      this.setState({icon: 'fas fa-sun'});
+    else if(weather === 'Clouds') 
+      this.setState({icon: 'fas fa-cloud'});
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const API = `http://api.openweathermap.org/data/2.5/find?q=${this.state.value}&units=metric&lang=en&appid=${API_KEY}`;
+
+    this.handleAPI(API);
+  }
+
   render() {
     return (
       <div className="container">
         <main className="app">
           <section className="app__result">
-            <Result />
+            <Result weatherData={this.state}/>
           </section>
           <aside className="app__aside">
             <Form 

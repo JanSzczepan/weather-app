@@ -6,7 +6,7 @@ const Details = (props) => {
    let fallName = '';
    let fallInfo = '';
    let fallContent = '';
-console.log(rain, snow);
+
    if(rain) {
       fallName = 'Rain';
       fallInfo = rain;

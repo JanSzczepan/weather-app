@@ -42,6 +42,27 @@
    font-size: 1.2rem;
 }
 
+.result__notfound-box {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+
+.result__notfound-icon {
+   font-size: 10rem;
+   margin-bottom: 8%;
+}
+
+.result__notfound-text {
+   font-size: 1.4rem;
+}
+
+.result__notfound-textstrong {
+   font-size: 1.6rem;
+}
+
 @media(min-width: 768px) {
    .result {
       flex-direction: row;
@@ -62,6 +83,19 @@
 
    .result__weather-info {
       font-size: 1.4rem;
+   }
+
+   .result__notfound-icon {
+      font-size: 12rem;
+      margin-bottom: 8%;
+   }
+
+   .result__notfound-text {
+      font-size: 1.6rem;
+   }
+
+   .result__notfound-textstrong {
+      font-size: 1.8rem;
    }
 }
 

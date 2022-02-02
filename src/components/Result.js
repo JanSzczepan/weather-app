@@ -31,9 +31,11 @@ const Result = (props) => {
          </>
       )
    } else if(err && city) {
-      // Dopracować
       content = (
-         <p>Nie mamy w bazie {city}...</p>
+         <div className="result__notfound-box">
+            <i className="result__notfound-icon fas fa-plane-slash"></i>
+            <p className="result__notfound-text">Nie mamy w bazie<br/><strong className='result__notfound-textstrong'>{city}</strong>...</p>
+         </div>
       )
    }
 

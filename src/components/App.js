@@ -31,7 +31,6 @@ class App extends Component {
   handleAPI = (API) => {
     fetch(API)
       .then(response => {
-        // debugger
         if(response.ok) return response.json()
         else throw Error('Invalid API')
       })

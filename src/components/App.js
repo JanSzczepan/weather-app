@@ -16,7 +16,8 @@ class App extends Component {
     cloudy: '',
     humidity: '',
     wind: '',
-    fall: '',
+    rain: '',
+    snow: '',
     icon: '',
     err: false,
   }
@@ -30,6 +31,7 @@ class App extends Component {
   handleAPI = (API) => {
     fetch(API)
       .then(response => {
+        // debugger
         if(response.ok) return response.json()
         else throw Error('Invalid API')
       })
@@ -38,6 +40,21 @@ class App extends Component {
         // What to do if data has empty array???
         if(!data.list.length) throw Error('Invalid request')
         //
+
+        let rainV = null;
+        let snowV = null;
+
+        if(data.list[0].rain) 
+          for (let prop in data.list[0].rain) {
+            rainV = data.list[0].rain[prop];
+            break;
+          }
+        if(data.list[0].snow) 
+          for (let prop in data.list[0].snow) {
+            snowV = data.list[0].snow[prop];
+            break;
+          }
+
         this.setState({
           city: data.list[0].name,
           weather: data.list[0].weather[0].main,
@@ -45,9 +62,11 @@ class App extends Component {
           cloudy: data.list[0].clouds.all,
           humidity: data.list[0].main.humidity,
           wind: data.list[0].wind.speed,
-          fall: {rain: data.list[0].rain, snow: data.list[0].snow},
+          rain: rainV,
+          snow: snowV,
           err: false,
         });
+  
         this.handleWeatherIcon(this.state.weather);
       })
       .catch(err => {
@@ -95,7 +114,7 @@ class App extends Component {
               change={this.handleInputChange}
               submit={this.handleSubmit}
             />
-            <Details />
+            <Details weatherData={this.state}/>
           </aside>
         </main>
       </div>

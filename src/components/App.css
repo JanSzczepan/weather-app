@@ -22,6 +22,21 @@ body {
    background: linear-gradient(160deg, rgba(36, 36, 36, 1) 0%, rgba(21, 21, 21, 1) 50%, rgba(16, 16, 16, 1) 100%);
 }
 
+.container--rain {
+   background: rgb(36, 36, 36);
+   background: linear-gradient(160deg, rgba(36, 36, 36, 1) 0%, rgba(21, 21, 21, 1) 50%, rgba(16, 16, 16, 1) 100%);
+}
+
+.container--cloud {
+   background: rgb(18, 65, 88);
+   background: linear-gradient(180deg, rgba(18, 65, 88, 1) 0%, rgba(14, 24, 31, 1) 100%);
+}
+
+.container--sun {
+   background: rgb(182, 214, 230);
+   background: linear-gradient(180deg, rgba(182, 214, 230, 1) 0%, rgba(53, 149, 208, 1) 100%);
+}
+
 .app {
    height: 80%;
    width: 80%;
@@ -35,6 +50,18 @@ body {
    background-size: cover;
    -webkit-box-shadow: 15px 15px 30px 10px #0C0C0C;
    box-shadow: 15px 15px 30px 10px #0C0C0C;
+}
+
+.app--rain {
+   background-image: url('../../public/img/rainy.jpg');
+}
+
+.app--cloud {
+   background-image: url('../../public/img/cloudy.jpg');
+}
+
+.app--sun {
+   background-image: url('../../public/img/sunny3.jpg');
 }
 
 .app__result {
@@ -99,14 +126,14 @@ body {
 
 ::-webkit-input-placeholder {
    /* Edge */
-   color: #99A3A2;
+   color: #9EA7A6;
 }
 
 :-ms-input-placeholder {
    /* Internet Explorer 10-11 */
-   color: #99A3A2;
+   color: #9EA7A6;
 }
 
 ::placeholder {
-   color: #99A3A2;
+   color: #9EA7A6;
 }

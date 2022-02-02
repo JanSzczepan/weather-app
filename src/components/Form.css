@@ -26,6 +26,21 @@
    cursor: pointer;
 }
 
+.form__btn--rain {
+   background-color: #81A09A;
+   color: #28434C;
+}
+
+.form__btn--cloud {
+   background-color: #D66C05;
+   color: rgba(14, 24, 31, 1);
+}
+
+.form__btn--sun {
+   background-color: #AACDE1;
+   color: rgb(29, 45, 51);
+}
+
 .form__icon {
    font-size: 1.8rem;
    padding: 20px;

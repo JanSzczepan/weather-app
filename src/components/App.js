@@ -19,6 +19,9 @@ class App extends Component {
     rain: '',
     snow: '',
     icon: '',
+    containerClass: 'container',
+    appClass: 'app',
+    searchBtnClass: 'form__btn',
     err: false,
   }
 
@@ -36,9 +39,7 @@ class App extends Component {
       })
       .then(data => {
         console.log(data);
-        // What to do if data has empty array???
         if(!data.list.length) throw Error('Invalid request')
-        //
 
         let rainV = null;
         let snowV = null;
@@ -79,17 +80,47 @@ class App extends Component {
 
   handleWeatherIcon = (weather) => {
     if(weather === 'Thunderstorm') 
-      this.setState({icon: 'fas fa-poo-storm'});
+      this.setState({
+        icon: 'fas fa-poo-storm',
+        containerClass: 'container container--rain',
+        appClass: 'app app--rain',
+        searchBtnClass: 'form__btn form__btn--rain'
+      });
     else if(weather === 'Drizzle' || weather === 'Rain') 
-      this.setState({icon: 'fas fa-cloud-showers-heavy'});
+      this.setState({
+        icon: 'fas fa-cloud-showers-heavy',
+        containerClass: 'container container--rain',
+        appClass: 'app app--rain',
+        searchBtnClass: 'form__btn form__btn--rain'
+      });
     else if(weather === 'Snow') 
-      this.setState({icon: 'fas fa-snowflake'});
+      this.setState({
+        icon: 'fas fa-snowflake',
+        containerClass: 'container container--rain',
+        appClass: 'app app--rain',
+        searchBtnClass: 'form__btn form__btn--rain'
+      });
     else if(weather === 'Mist' || weather === 'Smoke' || weather === 'Haze' || weather === 'Dust' || weather === 'Fog' || weather === 'Sand' || weather === 'Dust' || weather === 'Ash' || weather === 'Squall' || weather === 'Tornado')
-      this.setState({icon: 'fas fa-smog'});
+      this.setState({
+        icon: 'fas fa-smog',
+        containerClass: 'container container--cloud',
+        appClass: 'app app--cloud',
+        searchBtnClass: 'form__btn form__btn--cloud'
+      });
     else if(weather === 'Clear') 
-      this.setState({icon: 'fas fa-sun'});
+      this.setState({
+        icon: 'fas fa-sun',
+        containerClass: 'container container--sun',
+        appClass: 'app app--sun',
+        searchBtnClass: 'form__btn form__btn--sun'
+      });
     else if(weather === 'Clouds') 
-      this.setState({icon: 'fas fa-cloud'});
+      this.setState({
+        icon: 'fas fa-cloud',
+        containerClass: 'container container--cloud',
+        appClass: 'app app--cloud',
+        searchBtnClass: 'form__btn form__btn--cloud'
+      });
   }
 
   handleSubmit = (e) => {
@@ -100,10 +131,12 @@ class App extends Component {
     this.handleAPI(API);
   }
 
+  //plans: overflow-x, obsługa startu aplikacji, obsługa zegara
+
   render() {
     return (
-      <div className="container">
-        <main className="app">
+      <div className={this.state.containerClass}>
+        <main className={this.state.appClass}>
           <section className="app__result">
             <Result weatherData={this.state}/>
           </section>
@@ -112,6 +145,7 @@ class App extends Component {
               value={this.state.value} 
               change={this.handleInputChange}
               submit={this.handleSubmit}
+              searchBtnClass={this.state.searchBtnClass}
             />
             <Details weatherData={this.state}/>
           </aside>

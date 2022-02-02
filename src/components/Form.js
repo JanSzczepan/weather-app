@@ -10,7 +10,7 @@ const Form = props => {
             value={props.value}
             onChange={props.change}
             placeholder='Type city...' />
-         <button className='form__btn' type='submit'><i className="form__icon fas fa-search"></i></button>
+         <button className={props.searchBtnClass} type='submit'><i className="form__icon fas fa-search"></i></button>
       </form>
    );
 }

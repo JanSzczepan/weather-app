@@ -30,6 +30,10 @@
    color: #9EA7A6;
 }
 
+.details__text-left--sun {
+   color: #E0E3E3;
+}
+
 .details__text-right {
    color: #E0E3E3;
    font-weight: bold;

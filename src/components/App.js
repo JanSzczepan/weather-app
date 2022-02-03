@@ -40,7 +40,7 @@ class App extends Component {
       .then(data => {
         console.log(data);
         if(!data.list.length) throw Error('Invalid request')
-
+        
         let rainV = null;
         let snowV = null;
 
@@ -125,6 +125,8 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
+    if(!this.state.value) return;
     
     const API = `http://api.openweathermap.org/data/2.5/find?q=${this.state.value}&units=metric&lang=en&appid=${API_KEY}`;
 
@@ -132,6 +134,40 @@ class App extends Component {
   }
 
   //plans: overflow-x, obsługa startu aplikacji, obsługa zegara
+
+  locationSuccess = (position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    const API_GEO = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=2e63da096b8b445391037440ef0eefc9`;
+
+    let cityCode = '';
+
+    fetch(API_GEO)
+      .then(response => {
+        if(response.ok) return response.json()
+        else throw Error('Invalid API')
+      })
+      .then(data => {
+        cityCode = data.results[0].components.postcode;
+
+        const API_WEATHER = `http://api.openweathermap.org/data/2.5/find?q=${cityCode}&units=metric&lang=en&appid=${API_KEY}`;
+
+        this.handleAPI(API_WEATHER);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  componentDidMount = () => {
+    const startCity = 'London';
+    const API = `http://api.openweathermap.org/data/2.5/find?q=${startCity}&units=metric&lang=en&appid=${API_KEY}`;
+
+    this.handleAPI(API);
+
+    navigator.geolocation.getCurrentPosition(this.locationSuccess);
+  }
 
   render() {
     return (

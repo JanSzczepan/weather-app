@@ -2,7 +2,7 @@ import './Result.css'
 import React from 'react';
 
 const Result = (props) => {
-   const {city, weather, temp, icon, err} = props.weatherData;
+   const {date, city, weather, temp, icon, err} = props.weatherData;
    let content = '';
 
    if(!err && city) {
@@ -16,11 +16,11 @@ const Result = (props) => {
                <div className='result__place-time'>
                   <h1 className='result__city'>{city}</h1>
                   <p className='result__time'>
-                     <span className='result__hours'>06:09</span>
+                     <span className='result__hours'>{date.hours}:{date.minutes}</span>
                      <span className='result__sign'> - </span>
-                     <span className='result__day'>Sunday</span>
+                     <span className='result__day'>{date.day}</span>
                      <span className='result__sign'>, </span>
-                     <span className='result__date'>6 Oct 19</span>
+                     <span className='result__date'>{date.date} {date.month} {date.year}</span>
                   </p>
                </div>
                <div className='result__weather'>

@@ -9,7 +9,14 @@ const API_KEY = 'f00a157958cfde0f24c05b9a0b456a37';
 class App extends Component {
   state = {
     value: '',
-    date: '',
+    date: {
+      year: null,
+      month: null,
+      date: null,
+      day: null,
+      hours: null,
+      minutes: null,
+    },
     city: '',
     weather: '',
     temp: '',
@@ -38,7 +45,6 @@ class App extends Component {
         else throw Error('Invalid API')
       })
       .then(data => {
-        console.log(data);
         if(!data.list.length) throw Error('Invalid request')
         
         let rainV = null;
@@ -133,8 +139,6 @@ class App extends Component {
     this.handleAPI(API);
   }
 
-  //plans: overflow-x, obsługa zegara
-
   locationSuccess = (position) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -160,6 +164,30 @@ class App extends Component {
       })
   }
 
+  currentDate = () => {
+    const time = new Date();
+    const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const year = String(time.getFullYear());
+    const syear = year.substring(year.length - 2);
+    let hours = time.getHours();
+    let minutes = time.getMinutes();
+
+    if(hours < 10) hours = `0${hours}`;
+    if(minutes < 10) minutes = `0${minutes}`;
+
+    this.setState({
+      date: {
+        year: syear,
+        month: month[time.getMonth()],
+        date: time.getDate(),
+        day: weekday[time.getDay()],
+        hours: hours,
+        minutes: minutes,
+      },
+    })
+  }
+
   componentDidMount = () => {
     const startCity = 'London';
     const API = `http://api.openweathermap.org/data/2.5/find?q=${startCity}&units=metric&lang=en&appid=${API_KEY}`;
@@ -167,6 +195,13 @@ class App extends Component {
     this.handleAPI(API);
 
     navigator.geolocation.getCurrentPosition(this.locationSuccess);
+
+    this.currentDate();
+    this.timeIntervalID = setInterval(() => this.currentDate(), 1000)
+  }
+
+  componentWillUnmount = () => {
+    clearInterval(this.timeIntervalID);
   }
 
   render() {

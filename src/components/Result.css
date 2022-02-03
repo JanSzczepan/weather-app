@@ -60,6 +60,7 @@
 
 .result__notfound-text {
    font-size: 1.4rem;
+   word-break: break-word;
 }
 
 .result__notfound-textstrong {
@@ -128,6 +129,7 @@
 @media(min-width: 1200px) {
    .result {
       flex-direction: row;
+      flex-wrap: wrap;
       gap: 0 20px;
       padding: 12% 10%;
       justify-content: flex-start;

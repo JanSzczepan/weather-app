@@ -3,10 +3,12 @@
    flex-direction: column;
    padding: 30px 15px;
    color: #E0E3E3;
+   align-items: flex-start;
+   overflow-x: auto;
 }
 
 .result__temp {
-   font-size: 10rem;
+   font-size: 7rem;
 }
 
 .result__weather-box {
@@ -17,7 +19,7 @@
 }
 
 .result__city {
-   font-size: 3.5rem;
+   font-size: 2.8rem;
    letter-spacing: 1.5px;
 }
 
@@ -63,10 +65,23 @@
    font-size: 1.6rem;
 }
 
+@media(min-width: 576px) {
+   .result__temp {
+      font-size: 10rem;
+   }
+
+   .result__city {
+      font-size: 3.5rem;
+      letter-spacing: 1.5px;
+   }
+}
+
 @media(min-width: 768px) {
    .result {
       flex-direction: row;
       gap: 0 20px;
+      justify-content: flex-start;
+      align-items: center;
    }
 
    .result__city {
@@ -104,6 +119,8 @@
       flex-direction: column;
       gap: 0;
       padding: 12% 10%;
+      justify-content: center;
+      align-items: flex-start;
    }
 }
 
@@ -112,5 +129,7 @@
       flex-direction: row;
       gap: 0 20px;
       padding: 12% 10%;
+      justify-content: flex-start;
+      align-items: center;
    }
 }

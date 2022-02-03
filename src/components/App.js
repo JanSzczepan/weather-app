@@ -133,7 +133,7 @@ class App extends Component {
     this.handleAPI(API);
   }
 
-  //plans: overflow-x, obsługa startu aplikacji, obsługa zegara
+  //plans: overflow-x, obsługa zegara
 
   locationSuccess = (position) => {
     const latitude = position.coords.latitude;

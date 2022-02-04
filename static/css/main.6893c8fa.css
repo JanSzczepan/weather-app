@@ -1,0 +1,403 @@
+body {
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+   margin: 0
+}
+
+code {
+   font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace
+}
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0
+}
+
+html {
+   font-size: 62.5%
+}
+
+body {
+   font-family: Lato, sans-serif;
+   font-size: 1.6rem
+}
+
+.container {
+   align-items: center;
+   display: flex;
+   height: 100vh;
+   justify-content: center
+}
+
+.container,
+.container--rain {
+   background: #242424;
+   background: linear-gradient(160deg, #242424, #151515 50%, #101010)
+}
+
+.container--cloud {
+   background: #124158;
+   background: linear-gradient(180deg, #124158, #0e181f)
+}
+
+.container--sun {
+   background: #b6d6e6;
+   background: linear-gradient(180deg, #b6d6e6, #3595d0)
+}
+
+.app {
+   background-position: top;
+   background-repeat: no-repeat;
+   background-size: cover;
+   box-shadow: 15px 15px 30px 10px #0c0c0c;
+   display: flex;
+   flex-direction: column;
+   height: 80%;
+   max-height: 700px;
+   max-width: 1080px;
+   width: 80%
+}
+
+.app,
+.app--rain {
+   background-image: url(../media/rainy.db0c808f3b2ff2e0a976.jpg)
+}
+
+.app--cloud {
+   background-image: url(../media/cloudy.5ae186684f01e87459ec.jpg)
+}
+
+.app--sun {
+   background-image: url(../media/sunny3.c3ab71290603cbf747e3.jpg)
+}
+
+.app__result {
+   align-items: flex-end;
+   display: flex;
+   flex-grow: 1;
+   justify-content: center
+}
+
+.app__aside {
+   -webkit-backdrop-filter: blur(5px);
+   backdrop-filter: blur(5px);
+   background-color: rgba(27, 27, 27, .219);
+   display: flex;
+   flex-direction: column;
+   height: 40%
+}
+
+@media(min-width:992px) {
+   .app {
+      flex-direction: row
+   }
+
+   .app__result {
+      flex-basis: 70%;
+      flex-grow: 0;
+      justify-content: flex-start
+   }
+
+   .app__aside {
+      flex-basis: 30%;
+      height: 100%
+   }
+}
+
+::-webkit-scrollbar {
+   width: 5px
+}
+
+::-webkit-scrollbar-track {
+   background: transparent;
+   margin-bottom: 15px;
+   margin-top: 15px
+}
+
+::-webkit-scrollbar-thumb {
+   background: #81a09a
+}
+
+::-webkit-scrollbar-thumb:hover {
+   background: #e0e3e3
+}
+
+::-webkit-input-placeholder {
+   color: #9ea7a6
+}
+
+:-ms-input-placeholder {
+   color: #9ea7a6
+}
+
+::placeholder {
+   color: #9ea7a6
+}
+
+.details {
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
+   overflow-y: auto;
+   padding: 0 30px 20px
+}
+
+.details__header {
+   color: #e0e3e3;
+   font-size: 1.6rem;
+   margin: 20px 0
+}
+
+.details__info-box {
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
+   justify-content: space-evenly
+}
+
+.details__info {
+   display: flex;
+   font-size: 1.4rem;
+   justify-content: space-between;
+   margin-bottom: 10px
+}
+
+.details__text-left {
+   color: #9ea7a6
+}
+
+.details__text-left--sun {
+   color: #e0e3e3
+}
+
+.details__text-right {
+   color: #e0e3e3;
+   font-weight: 700
+}
+
+@media(min-width:768px) {
+   .details {
+      padding: 0 50px 20px
+   }
+
+   .details__header {
+      font-size: 2rem
+   }
+
+   .details__info {
+      font-size: 1.6rem
+   }
+}
+
+@media(min-width:992px) {
+   .details__header {
+      margin: 35% 0
+   }
+
+   .details__info-box {
+      justify-content: flex-start
+   }
+
+   .details__info {
+      flex-grow: 1
+   }
+}
+
+.form {
+   display: flex
+}
+
+.form__input {
+   align-self: flex-end;
+   background-color: transparent;
+   border: none;
+   border-bottom: 1px solid #9ea7a6;
+   box-shadow: none !important;
+   color: #9ea7a6;
+   flex-grow: 1;
+   font-size: 1.8rem;
+   margin: 0 30px;
+   min-width: 0;
+   outline: none;
+   padding: 5px 0
+}
+
+.form__btn {
+   border: none;
+   box-shadow: none;
+   cursor: pointer;
+   outline: none
+}
+
+.form__btn,
+.form__btn--rain {
+   background-color: #81a09a;
+   color: #28434c
+}
+
+.form__btn--cloud {
+   background-color: #d66c05;
+   color: #0e181f
+}
+
+.form__btn--sun {
+   background-color: #aacde1;
+   color: #1d2d33
+}
+
+.form__icon {
+   font-size: 1.8rem;
+   padding: 20px
+}
+
+@media(min-width:768px) {
+   .form__input {
+      font-size: 2rem;
+      margin: 0 50px
+   }
+}
+
+@media(min-width:992px) {
+   .form__icon {
+      font-size: 2rem;
+      padding: 25px
+   }
+}
+
+.result {
+   align-items: flex-start;
+   color: #e0e3e3;
+   display: flex;
+   flex-direction: column;
+   overflow-x: auto;
+   padding: 30px 15px
+}
+
+.result__temp {
+   font-size: 7rem
+}
+
+.result__weather-box {
+   align-items: center;
+   display: flex;
+   gap: 0 15px;
+   justify-content: space-around
+}
+
+.result__city {
+   font-size: 2.8rem;
+   letter-spacing: 1.5px;
+   word-break: break-word
+}
+
+.result__time {
+   font-size: 1.2rem
+}
+
+.result__weather {
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around
+}
+
+.result__weather-icon {
+   font-size: 2.5rem;
+   margin: 10px 0 5px
+}
+
+.result__weather-info {
+   font-size: 1.2rem;
+   font-weight: 400
+}
+
+.result__notfound-box {
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center
+}
+
+.result__notfound-icon {
+   font-size: 10rem;
+   margin-bottom: 8%
+}
+
+.result__notfound-text {
+   font-size: 1.4rem;
+   word-break: break-word
+}
+
+.result__notfound-textstrong {
+   font-size: 1.6rem
+}
+
+@media(min-width:576px) {
+   .result__temp {
+      font-size: 10rem
+   }
+
+   .result__city {
+      font-size: 3.5rem;
+      letter-spacing: 1.5px
+   }
+}
+
+@media(min-width:768px) {
+   .result {
+      align-items: center;
+      flex-direction: row;
+      gap: 0 20px;
+      justify-content: flex-start
+   }
+
+   .result__city {
+      font-size: 4rem
+   }
+
+   .result__weather-icon {
+      font-size: 2.8rem
+   }
+
+   .result__time,
+   .result__weather-info {
+      font-size: 1.4rem
+   }
+
+   .result__notfound-icon {
+      font-size: 12rem;
+      margin-bottom: 8%
+   }
+
+   .result__notfound-text {
+      font-size: 1.6rem
+   }
+
+   .result__notfound-textstrong {
+      font-size: 1.8rem
+   }
+}
+
+@media(min-width:992px) {
+   .result {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0;
+      justify-content: center;
+      padding: 12% 10%
+   }
+}
+
+@media(min-width:1200px) {
+   .result {
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0 20px;
+      justify-content: flex-start;
+      padding: 12% 10%
+   }
+}

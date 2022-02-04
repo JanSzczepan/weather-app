@@ -134,7 +134,7 @@ class App extends Component {
 
     if(!this.state.value) return;
     
-    const API = `https://api.openweathermap.org/data/2.5/find?q=${this.state.value}&units=metric&lang=en&appid=${API_KEY}`;
+    const API = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/find?q=${this.state.value}&units=metric&lang=en&appid=${API_KEY}`;
 
     this.handleAPI(API);
   }
@@ -143,7 +143,7 @@ class App extends Component {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
-    const API_GEO = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=2e63da096b8b445391037440ef0eefc9`;
+    const API_GEO = `https://cors-anywhere.herokuapp.com/http://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=2e63da096b8b445391037440ef0eefc9`;
 
     let cityCode = '';
 
@@ -155,7 +155,7 @@ class App extends Component {
       .then(data => {
         cityCode = data.results[0].components.postcode;
 
-        const API_WEATHER = `https://api.openweathermap.org/data/2.5/find?q=${cityCode}&units=metric&lang=en&appid=${API_KEY}`;
+        const API_WEATHER = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/find?q=${cityCode}&units=metric&lang=en&appid=${API_KEY}`;
 
         this.handleAPI(API_WEATHER);
       })
@@ -190,7 +190,7 @@ class App extends Component {
 
   componentDidMount = () => {
     const startCity = 'London';
-    const API = `https://api.openweathermap.org/data/2.5/find?q=${startCity}&units=metric&lang=en&appid=${API_KEY}`;
+    const API = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/find?q=${startCity}&units=metric&lang=en&appid=${API_KEY}`;
 
     this.handleAPI(API);
 
